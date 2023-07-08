@@ -45,7 +45,7 @@ const ResetPassword = () => {
   const navigate = useNavigate();
 
   const { token } = useParams();
-  console.log(token);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserPassword({ ...userPassword, [name]: value });
@@ -66,16 +66,17 @@ const ResetPassword = () => {
         const res = await axios.get(
           `${process.env.REACT_APP_RESET_PASSWORD_URL}/${token}`
         );
-
         setVerify(res.data.message);
       } catch (err) {
         toast.error(err.response.data.message);
       }
     };
     verifyToken();
-    if (verify === undefined) {
+
+    if (verify === 'Token verified successfully.') {
+      toast.success('Success');
+    } else {
       toast.error('Invalid request!');
-      navigate('/');
     }
   }, [navigate, token, verify]);
 
@@ -96,7 +97,6 @@ const ResetPassword = () => {
         `${process.env.REACT_APP_NEW_PASSWORD_URL}/${token}`,
         { password: password }
       );
-
       toast.success(res.data.message);
       setUserPassword({
         password: '',

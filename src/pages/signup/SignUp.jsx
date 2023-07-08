@@ -72,9 +72,11 @@ const SignUp = () => {
     // });
 
     try {
-      const res = await axios.post(process.env.REACT_APP_REGISTER_URL, user);
+      const res = await axios.post(
+        `${process.env.REACT_APP_REGISTER_URL}`,
+        user
+      );
       toast.success(res.data.message);
-      // alert(res.data.message);
       setUser({
         firstname: '',
         lastname: '',
@@ -84,7 +86,6 @@ const SignUp = () => {
       navigate('/login');
     } catch (err) {
       toast.error(err.response.data.message);
-      // alert(err.response.data.message);
       setUser({
         firstname: '',
         lastname: '',

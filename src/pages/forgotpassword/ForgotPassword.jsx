@@ -67,7 +67,7 @@ const ForgotPassword = () => {
     // });
     try {
       const res = await axios.post(
-        process.env.REACT_APP_FORGOT_PASSWORD_URL,
+        `${process.env.REACT_APP_FORGOT_PASSWORD_URL}`,
         user
       );
       toast.success(res.data.message);

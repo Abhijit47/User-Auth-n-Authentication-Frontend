@@ -68,7 +68,7 @@ const SignInSide = ({ setLogin }) => {
     // });
     // setUser(data);
     try {
-      const res = await axios.post(process.env.REACT_APP_LOGIN_URL, user);
+      const res = await axios.post(`${process.env.REACT_APP_LOGIN_URL}`, user);
 
       localStorage.setItem('jwt', res.data.token);
       setLogin(localStorage.getItem('jwt'));
