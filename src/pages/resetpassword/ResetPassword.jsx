@@ -96,8 +96,8 @@ const ResetPassword = () => {
         `${process.env.REACT_APP_NEW_PASSWORD_URL}/${token}`,
         { password: password }
       );
-      console.log(res.data);
-      toast.success('Password changed Successfully.');
+
+      toast.success(res.data.message);
       setUserPassword({
         password: '',
         cpassword: '',
