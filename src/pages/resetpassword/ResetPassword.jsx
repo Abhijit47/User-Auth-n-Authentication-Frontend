@@ -45,7 +45,7 @@ const ResetPassword = () => {
   const navigate = useNavigate();
 
   const { token } = useParams();
-
+  console.log(token);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserPassword({ ...userPassword, [name]: value });
